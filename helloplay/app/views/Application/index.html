@@ -1,0 +1,45 @@
+#{extends 'main.html' /} #{set title:'Home' /} #{if firstPost}
+<div class="post">
+	<h2 class="post-title">
+		<a href="#">${firstPost.title}</a>
+	</h2>
+	<div class="post-metadata">
+		<span class="post-author">By ${firstPost.author?.fullname}</span> <span
+			class="post-date">${firstPost.postedAt.format('yyyy-MM-dd')}</span> <span
+			class="post-comments">
+			&nbsp;|&nbsp;${firstPost.comments.size()?:"no"} <!-- pluralize是表示复数，如果size大于0返回一个一个s否则不返回-->
+			comment${firstPost.comments.size().pluralize()} #{if
+			firstPost.comments} last by
+			${firstPost.comments.toArray()[-1].author} #{/if}
+		</span>
+		<div class="post-content">${firstPost.content.nl2br()}</div>
+	</div>
+	#{if postList}
+	<div class="older-posts">
+		<h3>
+			<span class="from">当前页数据</span>
+		</h3>
+		#{list items:postList, as:'oldPost'}
+		<h2 class="post-title">
+			<a href="#">${oldPost.title}</a>
+		</h2>
+		<span class="post-author"> By ${oldPost.author?.fullname} </span> <span
+			class="post-date"> ${oldPost.postedAt.format('yyyy-MM-dd')} </span> <span
+			class="post-comments"> &nbsp;|&nbsp;${oldPost.comments.size()}
+			<!-- pluralize是表示复数，如果size大于0返回一个一个s否则不返回-->
+			comment${oldPost.comments.size().pluralize()} #{if oldPost.comments}
+			, last by ${oldPost.comments.toArray()[-1].author} #{/if}
+		</span> #{/list}
+	</div>
+	#{/if}
+</div>
+#{/if} #{else}
+<div class="empty">There is currently nothing to read here.</div>
+<div>
+	<form action="/UserTask/add" method="POST">
+		Name: <input type="text" name="u.fullname" /> 
+		email: <input type="text"	name="u.email" />
+		<input type="submit" name="submit" value="Submit"/>
+	</form>
+</div>
+#{/else}
