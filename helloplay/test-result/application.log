@@ -1,0 +1,5 @@
+04 九月 2013 13:58:43,559 INFO  ~ Starting G:\GitHub\helloplay\helloplay
+04 九月 2013 13:58:44,086 WARN  ~ You're running Play! in DEV mode
+04 九月 2013 13:58:44,197 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+04 九月 2013 13:59:07,585 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0
+04 九月 2013 13:59:08,391 INFO  ~ Application 'helloplay' is now started !
